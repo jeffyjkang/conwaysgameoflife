@@ -3,7 +3,6 @@ import Rows from "./Rows";
 import "./Grid.css";
 
 const GridContainer = props => {
-  console.table(props.grid);
   return (
     <div className="grid">
       {props.grid.map(rows => (

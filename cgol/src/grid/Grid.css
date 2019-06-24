@@ -9,5 +9,11 @@
 }
 
 .boxes {
-  border: 1px solid white;
+  min-width: 1rem;
+  min-height: 1rem;
+  border: 1px solid black;
+  background: white;
+}
+
+.alive {
 }
