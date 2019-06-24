@@ -6,6 +6,7 @@ const InputContainer = props => {
       <form>
         Input size of grid: {"  "}
         <input type="number" min="0" name="size" onChange={props.sizeInput} />
+        <button onClick={props.gridCreate}>Create Grid</button>
       </form>
     </div>
   );
