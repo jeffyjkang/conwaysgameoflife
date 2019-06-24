@@ -1,17 +1,28 @@
 import React, { Component } from "react";
-import Grid from "./grid/Grid";
+import InputContainer from "./input/Input";
+import GridContainer from "./grid/Grid";
 
 import "./App.css";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      size: 0
+    };
   }
+  sizeInput = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
   render() {
+    console.log("size", this.state.size);
     return (
       <div className="App">
         <header className="App-background">
-          <Grid />
+          <h1>Conway's Game of Life</h1>
+          <InputContainer sizeInput={this.sizeInput} />
+          <GridContainer />
         </header>
       </div>
     );
