@@ -1,0 +1,30 @@
+1. Create readme with instructions to run locally
+2. Create a variably defined grid that follows listed rule.
+
+a. infinite two-dimensional orthoganal grid of square cells
+b. each of which is one of two possible states, alive or dead ("populated" or "unpopulated")
+c. every cell interacts with its eight neighbors
+d. transitions at each step in time
+
+3. any live cell with less than 2 live neighbors dies (underpopulation)
+4. any live cell with 2 or 3 live neighbors lives on to next gen
+5. any live cell with more than 3 live neighbors dies (overpopulation)
+6. any deadh cell with exactly 3 live neighbors becomes a live cell (reproduction)
+
+7. inital pattern is seed of system.
+8. first gen is created by applying above rules simultaneously to every cell
+9. seed-birth and deaths occur simultaneously.
+10. discrete moment at which the cycle occurs is sometimes called a tick
+11. rules continue to be applied repeatedly to create further gens
+
+
+/////
+
+1. Create React App.
+2. Create components.
+a. Main component to hold state of grid-size, rules
+b. input component for grid size, start, pause and stop app
+c. grid component renders grid and updates live, dead cells
+d. create grid, nested array
+e. conditionally render white, black squares.
+f. input rules
