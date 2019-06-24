@@ -1,0 +1,13 @@
+.grid {
+  margin: 1rem;
+  border: 2px solid gray;
+}
+
+.rows {
+  display: flex;
+  flex-direction: row;
+}
+
+.boxes {
+  border: 1px solid white;
+}

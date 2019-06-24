@@ -30,8 +30,8 @@ class App extends Component {
     this.setState({ grid });
   };
   render() {
-    console.log("size", this.state.size);
-    console.table("grid", this.state.grid);
+    // console.log("size", this.state.size);
+    // console.table("grid", this.state.grid);
     return (
       <div className="App">
         <header className="App-background">
@@ -40,7 +40,7 @@ class App extends Component {
             sizeInput={this.sizeInput}
             gridCreate={this.gridCreate}
           />
-          <GridContainer />
+          <GridContainer grid={this.state.grid} />
         </header>
       </div>
     );
