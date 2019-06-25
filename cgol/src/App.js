@@ -12,6 +12,7 @@ class App extends Component {
       patternInput: ""
     };
   }
+  //
   sizeInput = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -20,22 +21,10 @@ class App extends Component {
   gridCreate = e => {
     e.preventDefault();
     let num = this.state.size;
-    // let boxes = [];
-    // let grid = [];
-    // for (let i = 0; i < num; i++) {
-    //   boxes.push(0);
-    // }
-    // for (let j = 0; j < num; j++) {
-    //   grid.push(boxes);
-    // }
     let row = new Array(Number(num));
-    console.log(row);
     for (let i = 0; i < row.length; i++) {
       row[i] = new Array(Number(num)).fill(0);
     }
-    // console.log(boxes);
-    // console.log(grid);
-    console.table(row);
     this.setState({ grid: row });
   };
   //
@@ -46,30 +35,26 @@ class App extends Component {
   };
   setPattern = e => {
     e.preventDefault();
-    // console.log(this.state.patternInput);
-    // console.log(this.state.grid);
     let patternInput = this.state.patternInput;
     let mid = Math.floor(this.state.size / 2);
     let grid = [...this.state.grid];
-    // console.table(grid);
-    console.log(mid);
     switch (patternInput) {
       case "Blinker":
-        console.log("Blinker");
-        console.log(grid[mid]);
-        grid[mid].splice(mid, 1, 1);
+        grid[mid].splice(mid - 1, 3, 1, 1, 1);
         break;
       case "Toad":
-        console.log("Toad");
+        grid[mid - 1].splice(mid - 1, 3, 1, 1, 1);
+        grid[mid].splice(mid - 2, 3, 1, 1, 1);
         break;
       case "Beacon":
-        console.log("Beacon");
+        grid[mid - 2].splice(mid - 2, 2, 1, 1);
+        grid[mid - 1].splice(mid - 2, 1, 1);
+        grid[mid].splice(mid + 1, 1, 1);
+        grid[mid + 1].splice(mid, 2, 1, 1);
         break;
       default:
         console.log("Default");
     }
-    console.table(grid);
-    console.table(this.state.grid);
     this.setState({
       grid
     });
