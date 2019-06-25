@@ -27,7 +27,7 @@ class App extends Component {
     if (this.state.size < 4) {
       return alert("Claustrophobic much? Choose a bigger grid for life.");
     }
-    if (this.state.size > 100) {
+    if (this.state.size > 30) {
       return alert(
         "Woah, lets keep it simple, we are not building a civilization."
       );
@@ -83,6 +83,611 @@ class App extends Component {
         grid[mid - 1].splice(mid - 2, 1, 1);
         grid[mid].splice(mid + 1, 1, 1);
         grid[mid + 1].splice(mid, 2, 1, 1);
+        break;
+      case "Cross":
+        grid[mid - 4].splice(mid - 2, 4, 1, 1, 1, 1);
+        grid[mid - 3].splice(mid - 2, 4, 1, 0, 0, 1);
+        grid[mid - 2].splice(mid - 4, 8, 1, 1, 1, 0, 0, 1, 1, 1);
+        grid[mid - 1].splice(mid - 4, 8, 1, 0, 0, 0, 0, 0, 0, 1);
+        grid[mid].splice(mid - 4, 8, 1, 0, 0, 0, 0, 0, 0, 1);
+        grid[mid + 1].splice(mid - 4, 8, 1, 1, 1, 0, 0, 1, 1, 1);
+        grid[mid + 2].splice(mid - 2, 4, 1, 0, 0, 1);
+        grid[mid + 3].splice(mid - 2, 4, 1, 1, 1, 1);
+        break;
+      case "Star":
+        grid[mid - 5].splice(mid, 1, 1);
+        grid[mid - 4].splice(mid - 1, 3, 1, 1, 1);
+        grid[mid - 3].splice(mid - 3, 7, 1, 1, 1, 0, 1, 1, 1);
+        grid[mid - 2].splice(mid - 3, 7, 1, 0, 0, 0, 0, 0, 1);
+        grid[mid - 1].splice(mid - 4, 9, 1, 1, 0, 0, 0, 0, 0, 1, 1);
+        grid[mid].splice(mid - 5, 11, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1);
+        grid[mid + 1].splice(mid - 4, 9, 1, 1, 0, 0, 0, 0, 0, 1, 1);
+        grid[mid + 2].splice(mid - 3, 7, 1, 0, 0, 0, 0, 0, 1);
+        grid[mid + 3].splice(mid - 3, 7, 1, 1, 1, 0, 1, 1, 1);
+        grid[mid + 4].splice(mid - 1, 3, 1, 1, 1);
+        grid[mid + 5].splice(mid, 1, 1);
+        break;
+      case "Pulsar":
+        grid[mid - 6].splice(mid - 4, 9, 1, 1, 1, 0, 0, 0, 1, 1, 1);
+        grid[mid - 4].splice(
+          mid - 6,
+          13,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        );
+        grid[mid - 3].splice(
+          mid - 6,
+          13,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        );
+        grid[mid - 2].splice(
+          mid - 6,
+          13,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        );
+        grid[mid - 1].splice(mid - 4, 9, 1, 1, 1, 0, 0, 0, 1, 1, 1);
+        grid[mid + 1].splice(mid - 4, 9, 1, 1, 1, 0, 0, 0, 1, 1, 1);
+        grid[mid + 2].splice(
+          mid - 6,
+          13,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        );
+        grid[mid + 3].splice(
+          mid - 6,
+          13,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        );
+        grid[mid + 4].splice(
+          mid - 6,
+          13,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        );
+        grid[mid + 6].splice(mid - 4, 9, 1, 1, 1, 0, 0, 0, 1, 1, 1);
+        break;
+      case "Doublepenta":
+        grid[mid - 7].splice(mid - 3, 6, 1, 0, 0, 0, 0, 1);
+        grid[mid - 6].splice(mid - 5, 10, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1);
+        grid[mid - 5].splice(mid - 3, 6, 1, 0, 0, 0, 0, 1);
+        grid[mid + 4].splice(mid - 3, 6, 1, 0, 0, 0, 0, 1);
+        grid[mid + 5].splice(mid - 5, 10, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1);
+        grid[mid + 6].splice(mid - 3, 6, 1, 0, 0, 0, 0, 1);
+        break;
+      case "Oneonetwo":
+        grid[mid - 12].splice(
+          mid - 6,
+          13,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        );
+        grid[mid - 11].splice(mid - 5, 11, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1);
+        grid[mid - 10].splice(
+          mid - 9,
+          19,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1
+        );
+        grid[mid - 9].splice(
+          mid - 10,
+          21,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1
+        );
+        grid[mid - 8].splice(
+          mid - 9,
+          19,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        );
+        grid[mid - 7].splice(
+          mid - 10,
+          21,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        );
+        grid[mid - 6].splice(
+          mid - 12,
+          25,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        );
+        grid[mid - 5].splice(
+          mid - 11,
+          23,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        );
+        grid[mid - 4].splice(
+          mid - 11,
+          23,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        );
+        grid[mid - 3].splice(mid - 4, 9, 1, 0, 1, 0, 0, 0, 1, 0, 1);
+        grid[mid - 2].splice(
+          mid - 6,
+          13,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1
+        );
+        grid[mid - 1].splice(
+          mid - 6,
+          13,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        );
+        grid[mid + 1].splice(
+          mid - 6,
+          13,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        );
+        grid[mid + 2].splice(
+          mid - 6,
+          13,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1
+        );
+        grid[mid + 3].splice(mid - 4, 9, 1, 0, 1, 0, 0, 0, 1, 0, 1);
+        grid[mid + 4].splice(
+          mid - 11,
+          23,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        );
+        grid[mid + 5].splice(
+          mid - 11,
+          23,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        );
+        grid[mid + 6].splice(
+          mid - 12,
+          25,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        );
+        grid[mid + 7].splice(
+          mid - 10,
+          21,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        );
+        grid[mid + 8].splice(
+          mid - 9,
+          19,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        );
+        grid[mid + 9].splice(
+          mid - 10,
+          21,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1
+        );
+        grid[mid + 10].splice(
+          mid - 9,
+          19,
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          1,
+          0,
+          1
+        );
+        grid[mid + 11].splice(mid - 5, 11, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1);
+        grid[mid + 12].splice(
+          mid - 6,
+          13,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        );
         break;
       default:
         console.log("Default");
