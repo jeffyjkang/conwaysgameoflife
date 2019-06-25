@@ -1,6 +1,6 @@
 import React from "react";
 
-const InputContainer = props => {
+const GridInput = props => {
   return (
     <div>
       <form>
@@ -18,4 +18,4 @@ const InputContainer = props => {
   );
 };
 
-export default InputContainer;
+export default GridInput;

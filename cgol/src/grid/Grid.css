@@ -1,7 +1,7 @@
-.grid {
+/* .grid {
   margin: 1rem;
   border: 2px solid gray;
-}
+} */
 
 .rows {
   display: flex;
@@ -13,6 +13,7 @@
   min-height: 1rem;
   border: 1px solid black;
   background: white;
+  color: black;
 }
 
 .alive {
