@@ -36,7 +36,7 @@ c. if current cell is alive and alive neighbors are 2 or 3, stay alive, else die
     (this will count for less than 2 for underpopulation and over 3 for overpopulation)
 d. if current cell is dead and alive neighbors are 3, become alive, else stay dead
 
-4. create input for start, pause, stop game
+4. create input for start, pause, stop/reset game
 5. set interval/ set timeout to continually run game
 
 5. extras

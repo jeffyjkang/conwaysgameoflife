@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import InputContainer from "./input/InputContainer";
+import ConfigContainer from "./config/Config";
 import GridContainer from "./grid/Grid";
 
 import "./App.css";
@@ -60,6 +61,81 @@ class App extends Component {
     });
   };
   //
+  gameLogic = e => {
+    e.preventDefault();
+    console.log("fired");
+    let g = [...this.state.grid];
+    let size = this.state.size;
+    // let newGrid = new Array(Number(size));
+    // for (let i = 0; i < g.length; i++) {
+    //   newGrid[i] = g[i];
+    // }
+    let newGrid = [];
+    console.log(newGrid);
+    console.log(this.state.grid);
+    // skip 1 col and row
+    for (let i = 0; i < size; i++) {
+      newGrid.push([]);
+      for (let j = 0; j < size; j++) {
+        let alive = 0;
+        if (i !== 0 && i !== size - 1) {
+          if (g[i - 1][j - 1] === 1) alive++;
+          if (g[i - 1][j] === 1) alive++;
+          if (g[i - 1][j + 1] === 1) alive++;
+          if (g[i][j - 1] === 1) alive++;
+          if (g[i][j + 1] === 1) alive++;
+          if (g[i + 1][j - 1] === 1) alive++;
+          if (g[i + 1][j] === 1) alive++;
+          if (g[i + 1][j + 1] === 1) alive++;
+        }
+        console.log(alive);
+        if (g[i][j] === 1) {
+          if (alive === 2 || alive === 3) {
+            newGrid[i].push(1);
+          } else {
+            newGrid[i].push(0);
+          }
+        } else {
+          if (alive === 3) {
+            newGrid[i].push(1);
+          } else {
+            newGrid[i].push(0);
+          }
+        }
+      }
+      console.log(newGrid);
+    }
+    // for (let i = 1; i < size - 1; i++) {
+    //   for (let j = 1; j < size - 1; j++) {
+    //     // console.log(grid[i][j]);
+    //     let alive = 0;
+    //     if (g[i - 1][j - 1] === 1) alive++;
+    //     if (g[i - 1][j] === 1) alive++;
+    //     if (g[i - 1][j + 1] === 1) alive++;
+    //     if (g[i][j - 1] === 1) alive++;
+    //     if (g[i][j + 1] === 1) alive++;
+    //     if (g[i + 1][j - 1] === 1) alive++;
+    //     if (g[i + 1][j] === 1) alive++;
+    //     if (g[i + 1][j + 1] === 1) alive++;
+    //     console.log(alive);
+    //     if (g[i][j] === 1 && (alive < 2 || alive > 3)) {
+    //       newGrid[i][j] = 0;
+    //     }
+    //     if (g[i][j] === 0 && alive === 3) {
+    //       newGrid[i][j] = 1;
+    //     }
+    //   }
+    // }
+    // console.log(grid);
+    this.setState({ grid: newGrid });
+  };
+  controlGame = e => {
+    e.preventDefault();
+  };
+  resetGame = e => {
+    e.preventDefault();
+    console.log("fired");
+  };
   render() {
     // console.log("size", this.state.size);
     // console.table("grid", this.state.grid);
@@ -73,6 +149,11 @@ class App extends Component {
             gridCreate={this.gridCreate}
             patternInput={this.patternInput}
             setPattern={this.setPattern}
+          />
+          <ConfigContainer
+            gameLogic={this.gameLogic}
+            controlGame={this.controlGame}
+            resetGame={this.resetGame}
           />
           <GridContainer grid={this.state.grid} />
         </header>
