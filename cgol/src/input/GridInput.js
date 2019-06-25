@@ -13,6 +13,7 @@ const GridInput = props => {
           onChange={props.sizeInput}
         />
         <button onClick={props.gridCreate}>Create Grid</button>
+        {"  "} Default Game speed is 1 sec
       </form>
     </div>
   );

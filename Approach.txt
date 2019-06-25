@@ -40,10 +40,9 @@ d. if current cell is dead and alive neighbors are 3, become alive, else stay de
 5. set interval/ set timeout to continually run game
 
 5. extras
-a. skip first column and row to save time, make sure parameters are there for protection
-b. restrict user for grid sizes with alerts
-c. restrict user for pattern-grid size relationship with alerts
+a. restrict user for grid sizes with alerts
+b. restrict user for pattern-grid size relationship with alerts
 
-d. counter for each tick
-e. ability to change speed of ticks
+c. counter for each tick
+d. ability to change speed of ticks
 

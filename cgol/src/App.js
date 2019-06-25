@@ -10,7 +10,10 @@ class App extends Component {
     this.state = {
       size: 0,
       grid: [],
-      patternInput: ""
+      patternInput: "",
+      running: false,
+      generation: 0,
+      speed: 0
     };
   }
   //
@@ -61,19 +64,10 @@ class App extends Component {
     });
   };
   //
-  gameLogic = e => {
-    e.preventDefault();
-    console.log("fired");
+  gameLogic = () => {
     let g = [...this.state.grid];
     let size = this.state.size;
-    // let newGrid = new Array(Number(size));
-    // for (let i = 0; i < g.length; i++) {
-    //   newGrid[i] = g[i];
-    // }
     let newGrid = [];
-    console.log(newGrid);
-    console.log(this.state.grid);
-    // skip 1 col and row
     for (let i = 0; i < size; i++) {
       newGrid.push([]);
       for (let j = 0; j < size; j++) {
@@ -88,7 +82,6 @@ class App extends Component {
           if (g[i + 1][j] === 1) alive++;
           if (g[i + 1][j + 1] === 1) alive++;
         }
-        console.log(alive);
         if (g[i][j] === 1) {
           if (alive === 2 || alive === 3) {
             newGrid[i].push(1);
@@ -103,43 +96,50 @@ class App extends Component {
           }
         }
       }
-      console.log(newGrid);
     }
-    // for (let i = 1; i < size - 1; i++) {
-    //   for (let j = 1; j < size - 1; j++) {
-    //     // console.log(grid[i][j]);
-    //     let alive = 0;
-    //     if (g[i - 1][j - 1] === 1) alive++;
-    //     if (g[i - 1][j] === 1) alive++;
-    //     if (g[i - 1][j + 1] === 1) alive++;
-    //     if (g[i][j - 1] === 1) alive++;
-    //     if (g[i][j + 1] === 1) alive++;
-    //     if (g[i + 1][j - 1] === 1) alive++;
-    //     if (g[i + 1][j] === 1) alive++;
-    //     if (g[i + 1][j + 1] === 1) alive++;
-    //     console.log(alive);
-    //     if (g[i][j] === 1 && (alive < 2 || alive > 3)) {
-    //       newGrid[i][j] = 0;
-    //     }
-    //     if (g[i][j] === 0 && alive === 3) {
-    //       newGrid[i][j] = 1;
-    //     }
-    //   }
-    // }
-    // console.log(grid);
-    this.setState({ grid: newGrid });
+    let generation = this.state.generation;
+    generation = generation + 1;
+    this.setState({ grid: newGrid, generation });
+    if (this.state.running === true) {
+      setTimeout(
+        this.gameLogic,
+        this.state.speed === 0 ? 1000 : 100 * this.state.speed
+      );
+    }
+  };
+  setSpeed = e => {
+    this.setState({
+      [e.target.name]: [e.target.value]
+    });
   };
   controlGame = e => {
     e.preventDefault();
+    this.setState({ running: !this.state.running });
+    if (this.state.running === false) {
+      setTimeout(
+        this.gameLogic,
+        this.state.speed === 0 ? 1000 : 100 * this.state.speed
+      );
+    }
   };
   resetGame = e => {
-    e.preventDefault();
-    console.log("fired");
+    // e.preventDefault();
+    this.setState({
+      size: 0,
+      grid: [],
+      patternInput: "",
+      running: false,
+      generation: 0,
+      speed: 0
+    });
   };
   render() {
     // console.log("size", this.state.size);
     // console.table("grid", this.state.grid);
     // console.log("pattern", this.state.patternInput);
+    // console.log("running", this.state.running);
+    // console.log("generation", this.state.generation);
+    // console.log("speed", this.state.speed);
     return (
       <div className="App">
         <header className="App-background">
@@ -151,9 +151,12 @@ class App extends Component {
             setPattern={this.setPattern}
           />
           <ConfigContainer
-            gameLogic={this.gameLogic}
+            // gameLogic={this.gameLogic}
             controlGame={this.controlGame}
             resetGame={this.resetGame}
+            running={this.state.running}
+            generation={this.state.generation}
+            setSpeed={this.setSpeed}
           />
           <GridContainer grid={this.state.grid} />
         </header>
