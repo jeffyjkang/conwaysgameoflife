@@ -105,6 +105,9 @@ const PatternInput = props => {
         <button className="patternButton" type="submit">
           Set Pattern
         </button>
+        <span>
+          {"  "} Pattern Set: {props.patternSet === false ? "No" : "Yes"}
+        </span>
       </form>
     </div>
   );

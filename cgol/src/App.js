@@ -10,10 +10,13 @@ class App extends Component {
     this.state = {
       size: 0,
       grid: [],
+      gridSet: false,
       patternInput: "",
+      patternSet: false,
       running: false,
       generation: 0,
-      speed: 0
+      speed: 0,
+      hasRun: false
     };
   }
   //
@@ -27,17 +30,21 @@ class App extends Component {
     if (this.state.size < 4) {
       return alert("Claustrophobic much? Choose a bigger grid for life.");
     }
-    if (this.state.size > 30) {
+    if (this.state.size > 40) {
       return alert(
-        "Woah, lets keep it simple, we are not building a civilization."
+        "Woah, let's keep it simple, we are not building a civilization."
       );
+    }
+    if (this.state.hasRun === true) {
+      alert("Resetting game to create new grid.");
+      window.location.reload();
     }
     let num = this.state.size;
     let row = new Array(Number(num));
     for (let i = 0; i < row.length; i++) {
       row[i] = new Array(Number(num)).fill(0);
     }
-    this.setState({ grid: row });
+    this.setState({ grid: row, gridSet: true });
   };
   //
   patternInput = e => {
@@ -47,9 +54,35 @@ class App extends Component {
   };
   setPattern = e => {
     e.preventDefault();
+    if (this.state.patternInput === "") {
+      return alert("Must choose pattern to set.");
+    }
+    if (this.state.patternSet === true) {
+      return alert("Please reset game to set a different pattern.");
+    }
+    if (this.state.gridSet === false) {
+      return alert("Please create grid before selecting life pattern.");
+    }
     let patternInput = this.state.patternInput;
     let mid = Math.floor(this.state.size / 2);
     let grid = [...this.state.grid];
+    let match = {
+      Block: 4,
+      Boat: 5,
+      Tub: 5,
+      Loaf: 6,
+      Blinker: 5,
+      Toad: 6,
+      Beacon: 6,
+      Cross: 12,
+      Star: 15,
+      Pulsar: 17,
+      Doublepenta: 22,
+      Oneonetwo: 29
+    };
+    if (match[patternInput] > this.state.grid.length) {
+      return alert("Must create larger grid to sustain selected life pattern.");
+    }
     switch (patternInput) {
       case "Block":
         grid[mid - 1].splice(mid - 1, 2, 1, 1);
@@ -690,10 +723,11 @@ class App extends Component {
         );
         break;
       default:
-        console.log("Default");
+        return;
     }
     this.setState({
-      grid
+      grid,
+      patternSet: true
     });
   };
   //
@@ -741,13 +775,17 @@ class App extends Component {
     }
   };
   setSpeed = e => {
+    e.preventDefault();
     this.setState({
       [e.target.name]: [e.target.value]
     });
   };
   controlGame = e => {
     e.preventDefault();
-    this.setState({ running: !this.state.running });
+    if (this.state.grid.length < 1 || this.state.patternSet === false) {
+      return alert("Need game parameters, grid and/or pattern to start");
+    }
+    this.setState({ running: !this.state.running, hasRun: true });
     if (this.state.running === false) {
       setTimeout(
         this.gameLogic,
@@ -760,19 +798,16 @@ class App extends Component {
     this.setState({
       size: 0,
       grid: [],
+      gridSet: false,
       patternInput: "",
+      patternSet: false,
       running: false,
       generation: 0,
-      speed: 0
+      speed: 0,
+      hasRun: false
     });
   };
   render() {
-    // console.log("size", this.state.size);
-    // console.table("grid", this.state.grid);
-    // console.log("pattern", this.state.patternInput);
-    // console.log("running", this.state.running);
-    // console.log("generation", this.state.generation);
-    // console.log("speed", this.state.speed);
     return (
       <div className="App">
         <header className="App-background">
@@ -782,9 +817,9 @@ class App extends Component {
             gridCreate={this.gridCreate}
             patternInput={this.patternInput}
             setPattern={this.setPattern}
+            patternSet={this.state.patternSet}
           />
           <ConfigContainer
-            // gameLogic={this.gameLogic}
             controlGame={this.controlGame}
             resetGame={this.resetGame}
             running={this.state.running}

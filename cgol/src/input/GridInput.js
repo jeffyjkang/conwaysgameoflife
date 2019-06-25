@@ -4,11 +4,11 @@ const GridInput = props => {
   return (
     <div>
       <form>
-        Input size of grid (4-30): {"  "}
+        Input size of grid (4-40): {"  "}
         <input
           type="number"
-          min={0}
-          max={30}
+          min={4}
+          max={40}
           name="size"
           onChange={props.sizeInput}
         />

@@ -9,6 +9,7 @@ const InputContainer = props => {
       <PatternInput
         patternInput={props.patternInput}
         setPattern={props.setPattern}
+        patternSet={props.patternSet}
       />
     </div>
   );
