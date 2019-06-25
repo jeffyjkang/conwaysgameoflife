@@ -4,7 +4,7 @@ const GridInput = props => {
   return (
     <div>
       <form>
-        Input size of grid: {"  "}
+        Input size of grid (4-100): {"  "}
         <input
           type="number"
           min={0}

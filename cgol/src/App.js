@@ -24,6 +24,14 @@ class App extends Component {
   };
   gridCreate = e => {
     e.preventDefault();
+    if (this.state.size < 4) {
+      return alert("Claustrophobic much? Choose a bigger grid for life.");
+    }
+    if (this.state.size > 100) {
+      return alert(
+        "Woah, lets keep it simple, we are not building a civilization."
+      );
+    }
     let num = this.state.size;
     let row = new Array(Number(num));
     for (let i = 0; i < row.length; i++) {
@@ -43,6 +51,26 @@ class App extends Component {
     let mid = Math.floor(this.state.size / 2);
     let grid = [...this.state.grid];
     switch (patternInput) {
+      case "Block":
+        grid[mid - 1].splice(mid - 1, 2, 1, 1);
+        grid[mid].splice(mid - 1, 2, 1, 1);
+        break;
+      case "Boat":
+        grid[mid - 1].splice(mid - 1, 2, 1, 1);
+        grid[mid].splice(mid - 1, 3, 1, 0, 1);
+        grid[mid + 1].splice(mid, 1, 1);
+        break;
+      case "Tub":
+        grid[mid - 1].splice(mid, 1, 1);
+        grid[mid].splice(mid - 1, 3, 1, 0, 1);
+        grid[mid + 1].splice(mid, 1, 1);
+        break;
+      case "Loaf":
+        grid[mid - 2].splice(mid - 1, 2, 1, 1);
+        grid[mid - 1].splice(mid - 2, 4, 1, 0, 0, 1);
+        grid[mid].splice(mid - 1, 3, 1, 0, 1);
+        grid[mid + 1].splice(mid, 1, 1);
+        break;
       case "Blinker":
         grid[mid].splice(mid - 1, 3, 1, 1, 1);
         break;
