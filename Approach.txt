@@ -28,3 +28,22 @@ c. grid component renders grid and updates live, dead cells
 d. create grid, nested array
 e. conditionally render white, black squares.
 f. input rules
+
+3. game logic
+a. loop through nested array, must compare current index with current state of game neighbors.
+b. while walking through nested array, check all eight neighbors, keep track of status
+c. if current cell is alive and alive neighbors are 2 or 3, stay alive, else dies
+    (this will count for less than 2 for underpopulation and over 3 for overpopulation)
+d. if current cell is dead and alive neighbors are 3, become alive, else stay dead
+
+4. create input for start, pause, stop game
+5. set interval/ set timeout to continually run game
+
+5. extras
+a. skip first column and row to save time, make sure parameters are there for protection
+b. restrict user for grid sizes with alerts
+c. restrict user for pattern-grid size relationship with alerts
+
+d. counter for each tick
+e. ability to change speed of ticks
+
