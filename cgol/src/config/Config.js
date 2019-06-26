@@ -6,7 +6,7 @@ const ConfigContainer = props => {
     <div className="configContainer">
       <div>
         <form>
-          <span>Change speed of game (100ths/sec): {"  "} </span>
+          <span>Change speed of game (10th of a second): {"  "} </span>
           <input
             className="cInput"
             type="number"
