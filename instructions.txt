@@ -8,5 +8,5 @@ Run Game:
 3. set pattern to render generation 0 on grid
 4. start/ pause
 5. can modify speed of generation tick by 100ths of a second,
- 10 = 1 sec, 1= .1 sec, 100 = 10 sec
- 6. reset to change parameters
+    10 = 1 sec, 1= .1 sec, 100 = 10 sec
+6. reset to change parameters
