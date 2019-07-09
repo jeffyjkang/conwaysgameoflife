@@ -1,0 +1,4 @@
+[build]
+    base = "./cgol"
+    publish = "./cgol/build"
+    command = "yarn build"
